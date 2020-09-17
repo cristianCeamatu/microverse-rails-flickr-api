@@ -1,0 +1,39 @@
+<main class="mx-auto my-5">
+  <h1 class="">Welcome to the Flickr search API</h1>
+  <%= @info %>
+
+  <div class="search-section border-left border-right shadow rounded mx-auto my-5 p-3">
+    <div class="flex-container d-flex justify-content-center align-items-center ">
+      <%= form_with(method: :post, url: photos_path, local: true, class: 'search-form m-4') do |f| %>
+        <%= f.text_field :user_id, class: 'p-2 h5 w-100' %> <br>
+        <%= f.submit 'Search', class: 'p-2 h5 btn btn-primary w-100' %>
+      <% end %>
+
+      <div class="demo-links-container">
+        <h3>Random demo users</h3>
+        <ul class="demo-links list-unstyled">
+          <li class="demo-link"><%= link_to 'Cristian Ceamatu', root_path(user_id: '190280325@N08') %></li>
+          <li class="demo-link"><%= link_to 'Tina Sosna', root_path(user_id: 'worteinbildern') %></li>
+          <li class="demo-link"><%= link_to 'Mario Calma', root_path(user_id: '134378250@N05') %></li>
+          <li class="demo-link"><%= link_to 'Alessandra Marrapese', root_path(user_id: 'alessandra-photos') %></li>
+          <li class="demo-link"><%= link_to 'Marta Bevacqua', root_path(user_id: 'martabevacqua') %></li>
+        </ul>
+      </div>
+    </div>
+    <p class="text-muted mt-3 mb-0 pb-0">Where to find the ID? example: https://www.flickr.com/photos/<b>you-can-find-id`s-here</b>/</p>
+  </div>
+
+
+  <section class="container-fluid py-4 mt-5">
+      <p class="h3 mb-4"><%= @section_message %></p>
+      <div class="photos-container d-inline-flex flex-wrap align-items-stretch">
+      <ul class="photo-list list-unstyled">
+        <li>
+          <% @photos.each do |photo| %>
+              <img src=<%= "http://farm#{photo.farm}.staticflickr.com/#{photo.server}/#{photo.id}_#{photo.secret}.jpg" %> alt=<%= photo.title %> class="my-3" >
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </section>
+</main>
