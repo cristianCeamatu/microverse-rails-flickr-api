@@ -46,9 +46,9 @@ end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
+  gem 'hirb'
   gem 'rubocop', '~>0.81.0'
   gem 'web-console', '>= 3.3.0'
-  gem 'hirb'
 end
 
 group :test do
@@ -56,9 +56,12 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
-  gem 'webdrivers'
   gem 'shoulda-matchers', '~> 4.0'
+  gem 'webdrivers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+
+# PROJECT SPECIFIC
+gem 'flickraw', '~> 0.9.9'

@@ -1,0 +1,25 @@
+// Place all the styles related to the photos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+main {
+  max-width: 1224px;
+
+  .search-section {
+    max-width: 720px;
+
+    .search-form {
+      width: 70%;
+    }
+  }
+}
+
+.photo-list li {
+  height: 40vh;
+}
+
+img {
+  max-height: 100%;
+  object-fit: cover;
+  vertical-align: bottom;
+}

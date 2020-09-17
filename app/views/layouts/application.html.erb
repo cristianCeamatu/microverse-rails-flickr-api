@@ -1,16 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TemplateRailsStylelineRubocop</title>
+    <title>Flickr Search API</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag asset_path('favicon.png') %>
   <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar bg-primary">
+      <ul class="list-unstyled navbar-left mb-0">
+        <li class="navbar-brand text-white"><i class="fab fa-flickr"></i> <%= link_to 'Flicker API', root_path, class: 'font-weight-bold  text-white' %></li>
+      </ul>
+
+      <ul class="list-unstyled navbar-right mb-0">
+        <li class="navbar-item"><%= link_to 'Back', root_path, class: 'btn btn-secondary' %></li>
+      </ul>
+    </nav>
+    <% if notice %>
+      <p class="notice bg-danger text-white text-center font-weight-bold py-2"><%= notice %></p>
+    <% end %>
+    
+    <div class="container-fluid py-3 text-center">
+      <%= yield %>
+    </div>
   </body>
 </html>
