@@ -1,49 +1,25 @@
 ![Hireable](https://img.shields.io/badge/Hireable-yes-success) ![](https://img.shields.io/badge/-Microverse%20projects-blueviolet)
 
-# The Master Seach Telegram Bot
+# Rails app that uses the Flickr API to receive the latest uploaded photos from all users or search for a specific user
 
-> In this project, I built a Telegram Bot that can search on Wikipedia or get you 3 random Wikipedia articles. It also sends you random funny Gifs every time you write something else in the chat or you use the /start and /stop commands. The main goal is to make a massive use of external API`s by putting into practice the main concepts of Object Oriented Programming, classes, modules, objects and accessing their attributes.<br>
-> The project is built using the TDD technique.
+> In this project, we built app that uses the Flickr API, the index page will return the most recent uploaded photos on Flickr or the search results by ID (photo limit is maximum 15).
 
-## The Bot is live, you can check him here: [Master Search Bot](http://t.me/master_search_ruby_bot)
+## App functionality
+* Guests can check latest 15 photos added on Flickr
+* Users can search for photos of users
 
-## You can see a short demo of the Bot /start command in the screenshot below.
-![image](.github/app_screenshot.png)
+## This web app is live, you can check it here: [Live demo](https://rails-flickr-api.herokuapp.com/)
 
-## The files structure of the project
-![screenshot](.github/folder_structure.png)
-### Live version of the code: [REPL.it](https://repl.it/@cristianCeamatu/microverse-ruby-telegram-bot)
-
-## Available commands for the master-search-bot
-
-1. `/start` receive a greetings message, all available commands and a funny random Gif
-2. `/stop` receive a farewell message, a nice joke and a funny random Gif
-3. `search wiki <your query>` receive a loading message and maximum 3 Wikipedia articles related to your search query
-4. `search wiki random` receive 3 random Wikipedia articles
-4. `search google <your query>` receive a loading message and maximum 3 articles from the **Google Domain Websites (not a regular google search)**
-5. Writed anything else in the chat and you will be informed about the available commands and receive a random funny Gif
-
-## Video Explanation
-
-Here is the [video explanation](https://www.loom.com/share/b997a75a2bcb46f1ad2bc2a03ebe4015) of this project.
+## Screenshot of the app.
+![image](.github/app-screenshot.png)
 
 ## Built With
 * Ruby
-* [Telegram API](https://core.telegram.org/api)
-* [Wikipedia API](https://www.mediawiki.org/wiki/API:Main_page/en)
-* [Tenor Gif API](https://tenor.com/gifapi/documentation)
-* RSpec
-* Rubocop
-
-## Ruby gems dependencies
-* colorize
-* dotenv
-* httparty
-* telegram-bot-ruby
+* Rails
 
 ## Prerequisities
 
-To get this project up and running locally, you must have ruby installed on your computer.
+To get this project up and running locally, you must have ruby and postgres installed on your computer.
 
 ## Getting Started
 
@@ -51,60 +27,37 @@ To get this project up and running locally, you must have ruby installed on your
 
 **Step 1**<br>
 Navigate through the local folder where you want to clone the repository and run<br>
-`git clone git@github.com:cristianCeamatu/microverse-ruby-telegram-bot.git`. It will clone the repo to your local folder.<br>
+`https://github.com/cristianCeamatu/microverse-rails-flickr-api`. It will clone the repo to your local folder.<br>
 or with https<br>
-`git clone https://github.com/cristianCeamatu/microverse-ruby-telegram-bot.git`.<br>
+`https://github.com/cristianCeamatu/microverse-rails-flickr-api.git`.<br>
 **Step 2**<br>
-Run `cd microverse-ruby-telegram-bot`<br>
+Run `cd microverse-rails-flickr-api`<br>
 **Step 3**<br>
 Run `bundle install` to install the gems from the `Gemfile`.<br>
 **Step 4**<br>
-Download the [Telegram app](https://desktop.telegram.org/), create an account and talk to the [Botfather](https://t.me/botfather). Follow the instructions and create a bot, you will then receive an API Token that looks like this: `1347431199:AAH4hPt6PDiJB4swk23Lb4oOzwocjKpba0S4` and the link to your bot.<br>
+Run `yarn install` to install the npm packages from the `package.json` file.<br>
 **Step 5**<br>
-Visit [Tenor API page](https://tenor.com/gifapi/documentation) and follow the quickstart steps to get a Tenor API Key.<br>
+Visit [Flickr API](https://www.flickr.com/services/api/) and sign up to get an API Key and a Secret.<br>
 **Step 6**<br>
-Visit [Google API page](https://developers.google.com/custom-search/v1/overview) and follow the quickstart steps to get the API token.<br>
+Run `bundle exec figaro install`, this will create a file called `application.yml` in the `config` folder.<br>
 **Step 7**<br>
-Run `touch .env` on your terminal to create the `.env` file. Then add your tokens in the required fields `TELEGRAM_BOT_TOKEN=` and `TENOR_API_TOKEN=` inside the file.<br>
+Open  `config/application.yml` and add your credenatials for your postgres account like  this:<br>
+`FLICKRAW_API_KEY: "exampleKey"` <br>
+`FLICKRAW_SHARED_SECRET: "secret"`<br>
 **Step 8**<br>
-Run `ruby bin/bot.rb` to start the bot.<br>
+Run `rails s` to start the rails server.<br>
 **Step 9**<br>
-Open the link to the bot that you received from the Botfather.<br>
-**Step 10**<br>
-You can use the commands defined in the [Available commands section](#available-commands-for-the-master-search-bot) defined above.<br>
-
-## Repository Contents
-
-The code for the project is divided into the following directories: **./bin**, **./lib**, and **./spec**.
-
-The **./bin** folder contains the executable **bot.rb** file.
-
-The **./lib** folder contains subsidiary files that set up all of the classes and methods used in bin/main.rb
-
-- **search.rb**, where the Search class is defined.
-- **utils.rb**, where the Utils module is defined.
-- **responder.rb**, the Responder class that takes the messages and delegates responses.
-- **bot_replies.rb**, where the BotReplies module includes together all the other reply modules.
-- **bot_command_replies.rb**, where the BotCommandReplies module is defined.
-- **bot_search_replies.rb**, where the BotSearchReplies module is defined.
-
-The **./spec** folder contains all the relative spec tests
-
-- **search_spec.rb**, where the tests for the Search class are defined.
-- **utils_spec.rb**, where the tests for the Utils methods are defined.
-- **spec_helper.rb**, initial file generated by the RSpec.
-
-In addition to the above, the repo also contains .rubocop.yml for linting.
+You can visit the app at `http://localhost:3000`. Enjoy!<br>
 
 ## Tests
 
 1. Open Terminal
 
-2. Install RSpec on your system by running:
+2. Migrate the test database:
 
-    `gem install rspec`
+    `rails db:migrate RAILS_ENV=test`
 
-3. Run the tests with the command:
+2. Run the tests with the command:
 
     `rspec`
 
@@ -119,8 +72,6 @@ In addition to the above, the repo also contains .rubocop.yml for linting.
 ## 🤝 Contributing
 
 Our favourite contributions are those that help us improve the project, whether with a contribution, an issue, or a feature request!
-
-Feel free to check the [issues page](https://github.com/cristianCeamatu/microverse-ruby-telegram-bot/issues) to either create an issue or help us out by fixing an existing one.
 
 ## Show your support
 
